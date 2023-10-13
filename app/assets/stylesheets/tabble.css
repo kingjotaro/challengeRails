@@ -1,0 +1,23 @@
+.table-container {
+  width: 100%;
+  display: flex;
+  overflow-x: auto;
+  justify-content: center;
+  text-align: center;
+}
+
+@media (max-width: 900px) {
+  .table-container {
+    justify-content: left;
+  }
+}
+
+th,
+td {
+  padding: 8px;
+  border: 1px solid #353434;
+}
+
+.actions {
+  display: flex;
+}

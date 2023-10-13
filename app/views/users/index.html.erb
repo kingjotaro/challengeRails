@@ -1,14 +1,50 @@
+<!-- app/views/users/index.html.erb -->
 <p style="color: green"><%= notice %></p>
 
 <h1>Users</h1>
-
-<div id="users">
-  <% @users.each do |user| %>
-    <%= render user %>
-    <p>
-      <%= link_to "Show this user", user %>
-    </p>
+ 
+<div class="search-bar">
+  <%= form_tag(users_path, method: :get) do %>
+    <%= text_field_tag :search, params[:search], id: "search-input", placeholder: "Search by name or email" %>
+    <%= submit_tag "Search", id: "search-button" %>
+   
   <% end %>
+ 
+  
+  </div>
+ 
+ 
+<div class="table-container">
+ <table>
+  <thead>
+    <tr>
+      <th>Name</th>
+      <th>Email</th>
+      <th>Phone</th>
+      <th>CPF</th>
+      <th>Actions</th>
+    </tr>
+  </thead>
+  <tbody>
+    <% @users.each do |user| %>
+      <tr>
+        <td><%= user.name %></td>
+        <td><%= user.email %></td>
+        <td><%= format_phone(user.phone) %></td>
+        <td><%= formatted_cpf(user.cpf) %></td>
+        <td class="actions">
+          <%= link_to "Show", user, class: "button action-button" %>
+          <%= link_to "Edit", edit_user_path(user), class: "button action-button" %>
+          <%= form_for user, method: :delete do |f| %>
+            <%= f.submit "Delete", class: "button action-button" %>
+          <% end %>
+        </td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
 </div>
 
-<%= link_to "New user", new_user_path %>
+<div class="div-new"> <%= link_to "New User", new_user_path, class: "new-user" %> </div>
+
+

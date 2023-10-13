@@ -2,6 +2,11 @@ source "https://rubygems.org"
 
 ruby "3.1.4"
 
+gem "validators"
+
+
+gem 'cpf_cnpj', '~> 0.5.0'
+
 # Bundle edge Rails instead: gem "rails", github: "rails/rails", branch: "main"
 gem "rails", "~> 7.1.0"
 

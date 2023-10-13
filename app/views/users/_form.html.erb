@@ -1,6 +1,6 @@
 <%= form_with(model: user) do |form| %>
   <% if user.errors.any? %>
-    <div style="color: red">
+    <div class="form-container" style="color: red">
       <h2><%= pluralize(user.errors.count, "error") %> prohibited this user from being saved:</h2>
 
       <ul>
@@ -11,27 +11,31 @@
     </div>
   <% end %>
 
-  <div>
+  <div class="form-container2">
     <%= form.label :name, style: "display: block" %>
-    <%= form.text_field :name %>
+    <%= form.text_field :name, placeholder: "Jhon"%>
   </div>
 
-  <div>
+  <div class="form-container2">
     <%= form.label :email, style: "display: block" %>
-    <%= form.text_field :email %>
+    <%= form.text_field :email, placeholder: "yourname@mail.com" %>
   </div>
 
-  <div>
+  <div class="form-container2">
     <%= form.label :phone, style: "display: block" %>
-    <%= form.text_field :phone %>
+    <%= form.text_field :phone, placeholder: "329883334444"%>
   </div>
 
-  <div>
+  <div class="form-container2">
     <%= form.label :cpf, style: "display: block" %>
-    <%= form.text_field :cpf %>
+    <%= form.text_field :cpf, placeholder: "12345678900" %>
   </div>
 
-  <div>
-    <%= form.submit %>
+  <div class="form-container3">
+    <%= form.submit class: "button action-button"%> 
+    <%= link_to "Back to users", users_path, class: "button action-button" %>
   </div>
+
+  
+   
 <% end %>

@@ -3,7 +3,11 @@ class UsersController < ApplicationController
 
   # GET /users or /users.json
   def index
-    @users = User.all
+    if params[:search].present?
+      @users = User.where("name LIKE ? OR email LIKE ? OR Phone LIKE ? OR cpf LIKE ?", "%#{params[:search]}%", "%#{params[:search]}%", "%#{params[:search]}%", "%#{params[:search]}%")
+    else
+      @users = User.all
+    end
   end
 
   # GET /users/1 or /users/1.json
@@ -67,4 +71,6 @@ class UsersController < ApplicationController
     def user_params
       params.require(:user).permit(:name, :email, :phone, :cpf)
     end
+
+   
 end
